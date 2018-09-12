@@ -32,7 +32,9 @@ app.use(require('express-session')({
 }));
 
 app.use(express.static(__dirname + '/public'));
-app.use(require('body-parser')());
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 function requireLogin(req, res, next) {
 	if (!req.session.user) {

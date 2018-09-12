@@ -21,6 +21,7 @@
     "body-parser": "^1.18.3",
     "chai": "^1.10.0",
     "cookie-parser": "^1.1.0",
+    "debug": "^4.0.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
@@ -29,11 +30,15 @@
     "handlebars": "^4.0.12",
     "ibm_db": "^2.4.0",
     "latest-version": "^3.1.0",
+    "lodash": "^4.17.10",
+    "ms": "^2.1.1",
     "mysql": "^2.16.0",
+    "node-growl": "^0.1.1",
     "nodemailer": "^4.6.8",
     "pakage.json": "^1.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "unzipper": "^0.9.3",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
