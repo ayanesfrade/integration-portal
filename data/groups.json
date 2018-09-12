@@ -1,0 +1,5 @@
+{ "integration"	: [ "SAP","MISC","DATA_WAREHOUSE","EDI","FIM","FTP","ORDERS","WAREHOUSES","WEB_UTIL" ],
+  "sap"			: [ "SAP" ],
+  "datawarehouse": [ "DATA_WAREHOUSE" ],
+  "edi" 		: ["EDI"]
+}

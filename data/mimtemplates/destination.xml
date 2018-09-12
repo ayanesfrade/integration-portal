@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--PM version='8.1.8.0' vendor='Metastorm, Inc'-->
+<XMOFTSReq>
+	<dqm>$XMDM_DESTINATION_NODE$</dqm>
+	<username>xmuser</username>
+	<destinationName>$XMDM_DESTINATION_NAME$</destinationName>
+	<dpath>$XMDM_DESTINATION_PATH$</dpath>	
+</XMOFTSReq>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--PM version='8.1.8.0' vendor='Metastorm, Inc'-->
+<DQMList>
+	<name>$XMDM_DESTINATIONLIST_NAME$</name>
+	<description>$XMDM_DESCRIPTION$</description>
+	<userId>xmuser</userId>
+	<import/>
+</DQMList>

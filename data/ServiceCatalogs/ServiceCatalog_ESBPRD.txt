@@ -1,0 +1,253 @@
+Service Catalog
+
+ESB QA
+
+NAT_ITSERVER_01
+
+   Connector
+    port='7801'
+    type='Embedded'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_ws_return_arch_documents/100/zca_ws_return_arch_documents/zca_ws_return_arch_documents'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_material_search/100/zca_material_search/zca_material_search'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_ws_get_debit_memo_types/100/zca_ws_get_debit_memo_types/zca_ws_get_debit_memo_types'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_ws_search_arch_documents/100/zca_ws_search_arch_documents/zca_ws_search_arch_documents'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+  Connector
+    port='7080'
+    type='Broker'
+    URLRegistration
+      url='/HTTPServices/AssortPromoUpload'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+
+  
+  
+ NAT_ITSERVER_02  
+   Connector
+    port='7803'
+    type='Embedded'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_lookup_tables_ols/100/zca_lookup_tables_ols/zca_lookup_tables_ols'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zsd_upload_assort_and_promo/100/zsd_upload_assort_and_promo/zsd_upload_assort_and_promo'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_ws_get_site_banner/100/zca_ws_get_site_banner/zca_ws_get_site_banner'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_upd_store_ailse_data_ols/100/zca_upd_store_aisle_data_ols/zca_upd_store_aisle_data_ols'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_update_store_data_ols/100/zca_update_store_data_ols/zca_update_store_data_ols'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_get_store_aisle_data_ols/100/zca_get_store_aisle_data_ols/zca_get_store_aisle_data_ols'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zca_get_store_data_ols/100/zca_get_store_data_ols/zca_get_store_data_ols'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+
+   Connector
+    cachedSSLSessions='0'
+    port='7845'
+    type='Embedded'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zhr_ws_get_init_pass/100/zhr_ws_get_init_pass/zhr_password_bind'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/SOAPServices/WorkflowReservationOutboundWebService'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+
+NAT_ITSERVER_04
+
+     Connector
+    port='7802'
+    type='Embedded'
+    URLRegistration
+      url='/SOAPServices/zsd_old_mc_mapping'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/api*'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP JSON Store Input'
+    URLRegistration
+      url='/SOAPServices/zsd_ols_prod_mapping'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/SOAPServices/zsd_ols_promo_mapping'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/SOAPServices/zsd_ols_assortment_mapping'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/SOAPServices/zsd_ols_store_mapping'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/Buyer/*'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+    URLRegistration
+      url='/cxf/ERP_to_EC_GenericODataUpsert'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/cxf/ERP_to_EC_EmployeeKeyDataQuery'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+
+     Connector
+    cachedSSLSessions='0'
+    port='7844'
+    type='Embedded'
+    URLRegistration
+      url='/Ariba/oktopay'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+
+NAT_ITSERVER_05
+
+    Connector
+    port='7804'
+    type='Embedded'
+    URLRegistration
+      url='/collect_to_map'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+    URLRegistration
+      url='/ICEM_TEST'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+    URLRegistration
+      url='/redeem_to_map'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+
+	Connector
+    cachedSSLSessions='0'
+    port='7843'
+    type='Embedded'
+    URLRegistration
+      url='/HTTPServices/SynchronizationLogs/Request*'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='SyncLogs JSON Input'
+    URLRegistration
+      url='/sap/bc/srt/rfc/sap/zsd_oso_web/100/zsd_oso_web/zsd_oso_web'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='SOAP Input'
+    URLRegistration
+      url='/HTTPServices/NewsletterSubscription'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP XML Input'
+    URLRegistration
+      url='/stamps/programs/current/transfers'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+    URLRegistration
+      url='/stamps/programs/current/balances'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='HTTP Input'
+    URLRegistration
+      url='/Services/NCRIncidentUpdate'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='TRUE'
+      UsedByHTTPNNodes='FALSE'
+      nodeLabel='NCR_Request'
+    URLRegistration
+      url='/Services/NCRRequest'
+      outstandingRequests='0'
+      UsedBySOAPNNodes='FALSE'
+      UsedByHTTPNNodes='TRUE'
+      nodeLabel='ASSYST Request IN'
+
+	
+
+    

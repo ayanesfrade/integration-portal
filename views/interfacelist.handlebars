@@ -1,0 +1,110 @@
+<script type="text/javascript">
+function onUpdate (intid){
+	var data = {};
+	var str = document.getElementById("intmember" + intid).value;
+    var ainfo = str.split("_");
+	data.intid = intid;
+	data.iname = document.getElementById("itname" + intid).text;
+	data.intmember = ainfo[0];
+	var intselect = document.getElementById("intmember" + intid);
+	data.intmembername = intselect.options[intselect.selectedIndex].text;
+	data.intmemberemail = ainfo[1];
+	data.status = document.getElementById("intstatus" + intid).value;
+	data.reqname =  document.getElementById("custName" + intid).innerHTML;
+	data.reqemail = document.getElementById("custEmail" + intid).value;
+
+   	$.ajax({
+            url: '/updateInterface',
+            type: 'POST',
+			data: data,
+            success: function(data){
+                if(data.success){
+                	alert("Success: " + data.message);
+                } else {
+                	alert("Error: " + data.message);
+                }
+            },
+            error: function(){
+            	document.getElementById('container').html('There was a problem.');
+            }
+        });
+}
+</script>
+
+<div class="box">
+	<div class="box-header">
+		<h3 class="box-title">Interface List</h3>
+	</div>
+	<!-- /.box-header -->
+	<div class="box-body">
+		<table id="example1" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Interface ID</th>
+					<th>Requester</th>
+					<th>Interface Name</th>
+					<th>Requested Date</th>
+					<th>Assigned Date</th>
+					<th>Assigned To</th>
+					<th>Status</th>
+					<th>Comments</th>
+					<th>Update</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each interfaces}}
+				<tr>
+					<td><a href="/miminterfacerequest?id={{this.interface_id}}">{{ this.interface_id }}</a></td>
+					<td><spam id="custName{{this.interface_id}}">{{ this.name }}</spam><input type="hidden" id="custEmail{{this.interface_id}}" name="custEmail" value="{{ this.uemail}}"></td>
+					<td><a href="/miminterfacerequest?id={{this.interface_id}}" id="itname{{this.interface_id}}">{{ this.iname }}</a></td>
+					<td>{{ this.requesting_date }}</td>
+					<td>{{ this.assigned_date }}</td>
+					{{#compare ../urole "integration" operator="=="}}
+					   <td><select name="intmember" id="intmember{{this.interface_id}}">
+					   {{#compare ../assignee NULL operator="=="}}
+					       <option value="" selected>Not assigned</option>
+					   {{/compare}}
+					   {{#each ../intgroup}}
+     				     <option value="{{ this.user_id }}_{{ this.email }}" {{#selected this.name ../aname}}{{/selected}}>{{ this.name }}</option>
+					   {{/each}}
+					   </select> </td>
+					{{/compare}}
+					{{#compare ../urole "integration" operator="!="}}
+					   <td>{{this.aname}}</td>
+					{{/compare}}
+					{{#compare ../urole "integration" operator="=="}}
+					<td><select name="intstatus" id="intstatus{{this.interface_id}}">
+						<option value="pending" {{#selected this.status "pending"}}{{/selected}}>pending</option>
+						<option value="assigned" {{#selected this.status "assigned"}}{{/selected}}>assigned</option>
+						<option value="in progress" {{#selected this.status "in progress"}}{{/selected}}>in progress</option>
+						<option value="completed" {{#selected this.status "completed"}}{{/selected}}>completed</option>
+					</select> </td>
+					{{/compare}}
+					{{#compare ../urole "integration" operator="!="}}
+					   <td><font color="{{pickColor this.status}}">{{ this.status }}</font></td>
+					{{/compare}}
+					<td>{{ this.comment }}</td>
+					{{#compare ../urole "integration" operator="=="}}
+					   <td><button type="button" onclick="onUpdate({{this.interface_id}})">Update</button></td>
+					{{/compare}}
+				</tr>
+				{{/each}}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Interface ID</th>
+					<th>Requester</th>
+					<th>Interface Name</th>
+					<th>Requested Date</th>
+					<th>Assigned Date</th>
+					<th>Assigned To</th>
+					<th>Status</th>
+					<th>Comments</th>
+					<th>Update</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<!-- /.box-body -->
+</div>
+

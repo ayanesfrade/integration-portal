@@ -1,0 +1,523 @@
+[
+   {
+      "itserver": "NAT_ITSERVER_01",
+      "services": [
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_cycle_coupon_ws/100/zcyclecouponws/zcyclecouponws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zca_ws_get_debit_memo_types/100/zca_ws_get_debit_memo_types/zca_ws_get_debit_memo_types",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zca_ws_search_arch_documents/100/zca_ws_search_arch_documents/zca_ws_search_arch_documents",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_category_managers_ws/100/zcatmanagerws/zcatmanagerws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_article_master_data_ws/100/zgetarticlemdws/zgetarticlemdws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_cycle_ws/100/zcyclews/zcyclews",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_article_retail_ws/100/zgetartretailws/zgetartretailws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zca_ws_return_arch_documents/100/zca_ws_return_arch_documents/zca_ws_return_arch_documents",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zalloc_bulletin_service/100/zalloc_bulletin_service/zalloc_bulletin_service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_blackout_dates_ws/100/zblackoutws/zblackoutws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_validate_art_listing_ws/100/zvalidartlistws/zvalidartlistws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_merchandise_category_ws/100/zmerchcatws/zmerchcatws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_get_article_hier_nodes_ws/100/zarthiernodews/zarthiernodews",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_cycle_add_theme_ws/100/zcycleaddthemws/zcycleaddthemws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zca_material_search/100/zca_material_search/zca_material_search",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_family_article_validate_ws/100/zfamartvalws/zfamartvalws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/z_cycle_coupon_rewards_ws/100/zcouponrewardws/zcouponrewardws",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/WebServices/APDataExchange.svc*",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/sap/bc/srt/rfc/sap/zsd_rsc_credits/100/zsd_rsc_credits/zsd_rsc_credits",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7800",
+            "url": "/soap/action",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         }
+      ]
+   },
+   {
+      "itserver": "NAT_ITSERVER_02",
+      "services": [
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_ws_get_site_banner/100/zca_ws_get_site_banner/zca_ws_get_site_banner",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zsd_cdm_web_ui/*/zsd_cdm_web_ui/zsd_cdm_web_ui",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_get_store_data_ols/100/zca_get_store_data_ols/zca_get_store_data_ols",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_lookup_tables_ols/100/zca_lookup_tables_ols/zca_lookup_tables_ols",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_update_store_data_ols/100/zca_update_store_data_ols/zca_update_store_data_ols",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_upd_store_ailse_data_ols/100/zca_upd_store_aisle_data_ols/zca_upd_store_aisle_data_ols",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zsd_vendor_web/100/zsd_vendor_web/zsd_vendor_web",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zca_get_store_aisle_data_ols/100/zca_get_store_aisle_data_ols/zca_get_store_aisle_data_ols",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zalloc_bulletin_service/100/zalloc_bulletin_service/zalloc_bulletin_service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zsd_cdm_web_fi/100/zsd_cdm_web_fi/zsd_cdm_web_fi",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7801",
+            "url": "/sap/bc/srt/rfc/sap/zsd_upload_assort_and_promo/100/zsd_upload_assort_and_promo/zsd_upload_assort_and_promo",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7080",
+            "url": "/HTTPServices/AssortPromoUpload",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         }
+      ]
+   },
+   {
+      "itserver": "NAT_ITSERVER_03",
+      "services": [
+         {
+            "port": "7804",
+            "url": "/collect_to_map",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7804",
+            "url": "/redeem_to_map",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7804",
+            "url": "/ICEM_TEST",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/sap/bc/srt/rfc/sap/zsd_oso_web/100/zsd_oso_web/zsd_oso_web",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/HTTPServices/NewsletterSubscription",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/HTTPServices/EmailNotification/Request*",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/HTTPServices/SynchronizationLogs/Request*",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/stamps/programs/current/transfers",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7843",
+            "url": "/stamps/programs/current/balances",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         }
+      ]
+   },
+   {
+      "itserver": "NAT_ITSERVER_04",
+      "services": [
+         {
+            "port": "7802",
+            "url": "/SOAPServices/zsd_ols_promo_mapping",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/SOAPServices/zsd_ols_assortment_mapping",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/SOAPServices/zsd_old_mc_mapping",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/SOAPServices/zsd_ols_store_mapping",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/SOAPServices/zsd_ols_prod_mapping",
+            "passthrough": "false",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/Buyer/*",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/cxf/ERP_to_EC_GenericODataUpsertLatest",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/cxf/ERP_to_EC_EmployeeKeyDataQueryLatest",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/cxf/ERP_to_EC_EmployeeKeyDataQuery",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7802",
+            "url": "/cxf/ERP_to_EC_GenericODataUpsert",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7844",
+            "url": "/stamps/programs/current/balances",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         }
+      ]
+   },
+   {
+      "itserver": "NAT_ITSERVER_05",
+      "services": [
+         {
+            "port": "7803",
+            "url": "/B2B/HealthCheck",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/sap/bc/srt/rfc/sap/zsd_cdm_web_ui/100/zsd_cdm_web_ui/zsd_cdm_web_ui",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/B2B/HealthCheck",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/HTTPService/TestUnresponsiveActionService",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/sap/bc/srt/rfc/sap/zalloc_bulletin_service/350/zalloc_bulletin/zalloc_bulletin_service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/GS1Service/service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/SOAPServices/ZLO_BH_MF_TMS_Service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7803",
+            "url": "/SOAPServices/ZLO_LOCATION_TMS_Service",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7847",
+            "url": "/Services/NCRRequest",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "FALSE",
+            "UsedByHTTPNNodes": "TRUE",
+            "ApplicationName": "name"
+         },
+         {
+            "port": "7847",
+            "url": "/Services/NCRIncidentUpdate",
+            "passthrough": "true",
+            "UsedBySOAPNNodes": "TRUE",
+            "UsedByHTTPNNodes": "FALSE",
+            "ApplicationName": "name"
+         }
+      ]
+   }
+]

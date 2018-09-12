@@ -1,0 +1,348 @@
+<form action="/miminterfacerequest" method="post" id="reqform">
+	<div class="box box-solid">
+		<div class="box-header with-border">
+			<h3 class="box-title">MIM interface parameters</h3>
+			<p></p>
+			<div class="col-md-8">
+				<div class="progress-group">
+					<span class="progress-text">Data required for Interface completion</span> 
+					<span class="progress-number" id="progval"><b>10</b>/100</span>
+					<div class="progress-sm">
+						<div class="progress-bar progress-bar-primary progress-bar-striped" id="progressbar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" id="regionselect">
+		    <!-- <label>Select one region for the source application node list: (*If the interface is going to be deployed to more than one region, select them at the bottom pannel)</label> -->
+		    <label style="margin-left: 20px;">Select region</label>
+			<div class="radio">
+				<label> <input type="radio" name="mimenv" id="regionRadio1" value="ATL" class="flat-red" checked> ATL 
+				</label>
+				<label> <input type="radio" name="mimenv" id="regionRadio2" value="ONT" class="flat-red"> ONT 
+				</label> 
+				<label> <input type="radio" name="mimenv" id="regionRadio3" value="WST" class="flat-red"> WST 
+				</label> 
+				<label> <input type="radio" name="mimenv" id="regionRadio4" value="QUE" class="flat-red"> QUE 
+				</label>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<div class="box-group" id="accordion">
+				<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+				<div class="panel box box-success">
+					<div class="box-header with-border">
+						<h4 class="box-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> Source Node-Application Parameters</a>
+						</h4>
+					</div>
+					<!-- /.box-header -->
+					<div id="collapseOne" class="panel-collapse collapse">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Source Application</label> 
+									<select class="form-control select2" style="width: 100%;" name="sourcenode" id="sourcenode"> 
+									{{#each groups}} 
+									  {{#each (lookup ../nodelist .)}} 
+									    {{#if mimnode}}
+										   <option value="{{mimnode}}">{{servername}} - MIM node ({{mimnode}})</option> 
+										{{else}} 
+										   {{#each .}}
+										      <option value="{{mimnode}}">{{servername}} - MIM node ({{mimnode}})</option> 
+										   {{/each}} 
+										{{/if}} 
+									   {{/each}} 
+									{{/each}}
+									</select>
+								</div>
+								<div class="box-header">
+									<h3 class="box-title">Help us configure your file transfer</h3>
+								</div>
+								<!-- /.form-group -->
+								<div class="form-group" id="interfacetypegrp">
+									<div class="radio">
+										<label> <input type="radio" name="interfaceType" id="optionsRadio1" value="F2F" class="flat-red" checked> Flat File
+										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio2" value="F2M" class="flat-red"> Mapped
+										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio3" value="FTP" class="flat-red"> FTP Tranfer
+										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio4" value="AS2" class="flat-red"> AS2 Comm
+										</label>
+									</div>
+								</div>
+								<div class="form-group" id="extcommgrp" style="display: none">
+									<label>Please provide external partner hostname:port or ip:port</label> 
+									<input type="text" class="form-control" placeholder="Enter archive file dir and name..." id="extpartnerdest" name="extpartnerdest" >
+								</div>
+								<div class="form-group" id="archgrp">
+									<label> <input type="checkbox" class="flat-red" name="sourfilearchive" id="sourfilearchive"> Archive file localy in the source box.
+									</label>
+								</div>
+								<div class="form-group" id="archivegrp" style="display: none">
+									<label>Archive Directory and File Name (Enter $XMDM_ORIGINAL_NAME$ if archive file matches source file name)</label> 
+									<input type="text" class="form-control" placeholder="Enter archive file dir and name..." id="archivepath" name="archivepath" >
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col -->
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Source Directory</label> 
+									<input type="text" class="form-control" placeholder="Enter source Directory..." name="sourcedirectory">
+								</div>
+								<div class="form-group">
+									<label>Source File Pattern</label> 
+									<input type="text" name="sourcfileinclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
+								</div>
+								<div class="form-group">
+									<label>File Exclude Pattern</label> 
+									<input type="text" name="sourcfileexclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
+								</div>
+								<div class="form-group">
+									<label>File Name Sample</label> 
+									<input type="text" class="form-control" placeholder="Enter source file name sample..." name="filenamesample" id="filenamesample">
+								    <label>Please choose one of the interface names that you think is suitable for this file transfer:</label>
+								    <div id=mimintnamediv class="radio"></div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+				</div>
+				<div class="panel box box-success">
+					<div class="box-header with-border">
+						<h4 class="box-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> Destination Node-Application Parameters </a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Destination Nodes-Application</label> 
+									<select class="form-control select2" style="width: 100%;" multiple="multiple" data-placeholder="Destination..." name="destinationnodes" id="destinationnodes"> 
+									{{#each nodelist}} 
+									    {{#if server.mimnode}}
+										      <option value="{{server.mimnode}}">{{server.servername}} - MIM node ({{server.mimnode}})</option> 
+										{{else}} 
+										   {{#each server}}
+										      <option value="{{mimnode}}">{{servername}} - MIM node ({{mimnode}})</option> 
+										   {{/each}} 
+										{{/if}} 
+									{{/each}}
+									</select>
+								</div>
+								<div class="box-header">
+									<h3 class="box-title">Type of file transfer</h3>
+								</div>
+								<div class="form-group" id="destscripts">
+									<!--
+								    <div class="form-group" >
+									<label> <input type="checkbox" class="flat-red" name="callscript"> Call Script after file delivery.	</label>
+								    </div>
+									<label>Script Directory</label> <input type="text" class="form-control" placeholder="Enter script directory..." name="scriptdir"> 
+									<label>Script Name</label> <input type="text" class="form-control" placeholder="Enter archive file dir and name..." name="scriptname">
+								    -->
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col -->
+							<div class="col-md-6" id="destdata">
+								<!--
+							  <div id="divDest">
+								<div class="form-group">
+									<label>Destination Directory</label> <input type="text" class="form-control" placeholder="Enter destination Directory..." name="destinationdirectory">
+								</div>
+								<div class="form-group">
+									<label>Destination File Name Pattern (Enter $XMDM_ORIGINAL_NAME$ if = source file name)</label> <input name="destinationfilename" type="text" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
+								</div>
+							  </div>
+     							 /.form-group -->
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+				</div>
+				<div class="panel box box-success">
+					<div class="box-header with-border">
+						<h4 class="box-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Deployment Regions </a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse">
+						<div class="form-group">
+							<label> <input type="checkbox" class="flat-red" checked name="atlregion"> Atlantic - National.</label>
+						</div>
+						<div class="form-group">
+							<label> <input type="checkbox" class="flat-red" name="ontregion"> Ontario.</label>
+						</div>
+						<div class="form-group">
+							<label> <input type="checkbox" class="flat-red" name="wstregion"> West.</label>
+						</div>
+						<div class="form-group">
+							<label> <input type="checkbox" class="flat-red" name="queregion"> Quebec.</label>
+						</div>
+						<input type="hidden" name="intnamepart" id="intnamepart">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Additional Comments</label>
+			<textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+		</div>
+		<div class="box-footer">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</div>
+</form>
+
+<div class="modal modal-success fade" id="modal-success">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Success message</h4>
+			</div>
+			<div class="modal-body">
+				<p id="successtxt"></p>
+				<div class="form-group" id="filepartarea">
+					<label>Help us select interface name for MIM monitoring:</label> 
+					<p>Enter a name in the text box to identify the file transfer in MIM's monitor, it could be part of the file name. Only use letters and "-" or "_" </p>
+					<label>F2F_SOURCE_</label>
+					<input type="text" class="form-control" id="intnametest" style="text-transform:uppercase">
+					<label>_DESTINATION</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal modal-danger fade" id="modal-danger">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Error message</h4>
+			</div>
+			<div class="modal-body">
+				<p id="errortxt">One fine body&hellip;</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal modal-warning fade" id="modal-warning">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Warning</h4>
+			</div>
+			<div class="modal-body">
+				<p id="warningtxt"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal modal-info fade" id="modal-info">
+	<div class="modal-dialog">	
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">File name Pattern helper</h4>
+			</div>
+			<div class="modal-body">
+			    <input type="hidden" name="hiddenValue" id="textBoxid" value="" />
+				<div class="form-group">
+					<div class="box-header">
+						<h3 class="box-title">Configure Destination file naming pattern</h3>
+					</div>
+					<div class="radio">
+						<p>Select the delimeter:</p>
+						<label id="labledot"> <input type="radio" name="delimiter" id="optionsRadios1" value="." class="flat-red" checked>Delimiter "."</label> 
+						<label id="labledash"> <input type="radio" name="delimiter" id="optionsRadios2" value="_" class="flat-red">Delimiter "-"</label>
+					</div>
+				</div>
+				<div class="form-group" id="patternitems">
+					<table class="table table-bordered">
+					    <tr>
+							<td>Source Pattern</td>
+    					</tr>
+						<tr id="spattcontainer">
+							<!--<td><span class="label label-success">Field1</span></td>  -->
+    					</tr>
+    					<tr>
+							<td>Field values</td>
+    					</tr>
+						<tr id="sfieldsvalues">
+							<!--<td><span class="label label-success">Field1</span></td>  -->
+						</tr>
+					</table>
+					<p>Select field value or enter a custom field:</p>
+					<table class="table table-bordered">
+						<tr>
+							<td>
+								<div class="btn-group-horizontal" id="fieldbttns">
+								    <!--<button type="button" class="btn btn-default">Field1</button> -->
+								</div>
+							</td>
+						</tr>
+						<tr>
+						  <td>
+						    <label>Any character or text:</label> <input type="text" class="form-control" placeholder="Enter ..." id="anyfieldval">
+						    <button type="button" class="btn btn-outline" id="anyfieldbttn">Apply</button>
+						  </td>
+						</tr>
+					</table>
+					<table class="table table-bordered">
+					    <tr>
+							<td>Dest Pattern</td>
+						</tr>
+						<tr id="dpattcontainer">
+							<!--<td><span class="label label-success">Field1</span></td>  -->
+						</tr>
+					</table>
+					<div class="form-group">
+						<label>Destination Name</label> <input type="text" id="destfileName" class="form-control" placeholder="Enter ..." readonly>
+					    <button type="button" class="btn btn-outline" id="clearpatt">Clear selection</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline" id="savechangesbttn">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

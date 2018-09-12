@@ -1,0 +1,36 @@
+[{
+	"username" 	: "Alejandro Yanes",
+	"email" 	: "alejandro.yanes@sobeys.com",
+	"password" 	: "cuba2017",
+	"group" 	: "integration"
+},
+{
+	"username" 	: "Ronnie Horton",
+	"email" 	: "ronnie.horton@sobeys.com",
+	"password" 	: "theboss",
+	"group" 	: "integration"
+}, 
+{
+	"username" 	: "Aaron Gallagher",
+	"email" 	: "aaron.gallagher@sobeys.com",
+	"password" 	: "motogp",
+	"group" 	: "datawarehouse"
+}, 
+{
+	"username" 	: "Matthew Mckennan",
+	"email" 	: "matthew.mckenna@sobeys.com",
+	"password" 	: "matt17",
+	"group" 	: "sap"
+}, 
+{
+	"username" 	: "Fakhruddin Islam",
+	"email" 	: "Fakhruddin.islam@sobeys.com",
+	"password" 	: "newglasgow17",
+	"group" 	: "integration"
+}, 
+{
+	"username" 	: "Sheri Jameson",
+	"email" 	: "Sheri.Jameson@sobeys.com",
+	"password" 	: "thegirl",
+	"group" 	: "integration"
+}]

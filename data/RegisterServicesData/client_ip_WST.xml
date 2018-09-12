@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<!--Metastorm V8.5.2.0.20110506-->
+<RegistryClient>
+   <node>PM4SVR</node>
+   <service>ip</service>
+   <ConnectionList>
+      <Connection>
+         <host>pm4wqa</host>
+         <port>3000</port>
+      </Connection>
+   </ConnectionList>
+</RegistryClient>

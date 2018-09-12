@@ -1,0 +1,9 @@
+{ "mimatlqa": {"server" : "pm4aqa", "database" : "PM401Q", "port" : "50000"},
+  "mimontqa": {"server" : "pm4oqa", "database" : "PM402Q", "port" : "60004"},
+  "mimwstqa": {"server" : "pm4wqa", "database" : "PM403Q", "port" : "60004"},
+  "mimqueqa": {"server" : "pm4qqa", "database" : "PM404Q", "port" : "60004"},
+  "mimatlprd": {"server" : "pm4apr", "database" : "PM401P", "port" : "50000"},
+  "mimontprd": {"server" : "pm4opr", "database" : "PM402P", "port" : "60004"},
+  "mimwstprd": {"server" : "pm4wpr", "database" : "PM403P", "port" : "60004"},
+  "mimqueprd": {"server" : "pm4qpr", "database" : "PM404P", "port" : "60004"}
+}

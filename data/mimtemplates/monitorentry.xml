@@ -1,0 +1,24 @@
+<MonitorEntry name="$XMDM_ENTRY_NAME$">
+	<descend>0</descend>
+	<userId/>
+	<dir>$XMDM_DIR$/</dir>
+	<destQueueName>CQ.COORDINATOR</destQueueName>
+	<destQueueManager>${commonOQMQueue}</destQueueManager>
+	<include>$XMDM_INCLUDE_DIR$</include>
+	<exclude>$XMDM_EXCLUDE_DIR$</exclude>
+	<notificationMessageTemplate format="xml">
+		<Workflow>
+			<process>$XMDM_PROCESS_NAME$</process>
+			<processId>$XMDM_PROCESS_ID$</processId>
+			<domain>$XMDM_DOMAIN_NAME$</domain>
+			<description>Transferring $XMDM_SRC_QMGR_NAME$::$XMDM_ORIGINAL_PATH$</description>
+			<userId>$XMDM_USER_ID$</userId>
+			<import location="XML/RequestTemplate/$XMDM_TEMPLATE_NAME$"/>
+		</Workflow>
+	</notificationMessageTemplate>
+	<ExitList/>
+	<WorkflowOptions>
+		<processName>$XMDM_MIM_PROCESS$</processName>
+		<domain/>
+	</WorkflowOptions>
+</MonitorEntry>

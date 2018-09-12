@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--PM version='8.1.8.0' vendor='Metastorm, Inc'-->
+<XMOFTSReq>
+	<label>$XMDM_TEMPLATE_NAME$</label>
+	<template>True</template>
+	<lqm>$XMDM_SRC_QMGR_NAME$</lqm>
+	<sqm>$XMDM_SOURCE_NODE$</sqm>
+	<dqm>$XMDM_DESTINATION_NODE$</dqm>
+	<oqm>${commonOQMQueue}</oqm>
+	<chmod>664</chmod>
+	<id2>$XMDM_ORIGINAL_NAME$</id2>
+	<spath>$XMDM_PATH$</spath>
+	<dpath>$XMDM_DESTINATION_PATH$</dpath>
+	<delsrc>True</delsrc>
+	<compressionLevel>5</compressionLevel>
+	<nothreshold>true</nothreshold>
+	<ControlCenter>
+		<doStatus>1</doStatus>
+	</ControlCenter>
+	<username>xmuser</username>
+</XMOFTSReq>

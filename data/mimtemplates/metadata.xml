@@ -1,0 +1,15 @@
+<End2EndInterface>
+  <import location="deployConfig/deployConfigFile.xml"/>	
+  <Destination>
+    <SourceNameDelimiter>$XMDM_NAME_DELIMITER$</SourceNameDelimiter>
+    <FilenamePattern>
+      <Part></Part></FilenamePattern>
+    <DataDirectory>$XMDM_DATA_DIRECTORY$</DataDirectory>
+    <Script>
+      <ScriptDirectory>$XMDM_SCRIPT_DIRECTORY$</ScriptDirectory>
+      <ScriptName>$XMDM_SCRIPT_NAME$</ScriptName>
+	  <Parm1>$XMDM_PARAM1$</Parm1>
+      <Parm2>$XMDM_PARAM1$</Parm2>
+      </Script>
+   </Destination>
+</End2EndInterface>

@@ -1,0 +1,116 @@
+<script>
+	var timeout;
+
+	app.controller('catalogCtrl', function($scope, $http) {
+		$scope.servicecatlg = {};
+		$scope.searchtext = "";
+		$scope.server = "esbnqa";
+		
+		$scope.loadServer = function() {
+			    $http.get("/getservercatalog",{params:{"esbserver": $('input[name="esbenv"]:checked').val()}}).then(function(response) {
+					$scope.servicecatlg = response.data.records;
+				}).catch (function (error){
+					$scope.servicecatlg = [];
+				});
+		};
+		
+		$scope.textChanged = function() {
+			$scope.$apply();
+		}
+		
+		$scope.matchurl = function(url) {
+			return url.match($scope.searchtext);
+		}
+    });
+	
+</script>
+
+<div ng-controller="catalogCtrl" ng-init="loadServer()">
+	<div class="row">
+		<div class="col-xs-7">
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">Select server:</h3>
+				</div>
+				<div class="box-body">
+					<div class="form-group" id="interfacetypegrp">
+						<div class="box-header">
+							<h3 class="box-title">National ESB servers:</h3>
+						</div>
+						<div class="box box-solid bg-teal-gradient">
+							<div>
+								<label> <input type="radio" name="esbenv" id="optionsRadio1" value="esbnqa" checked ng-model="server" ng-change="loadServer()"> National ESB QA
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio2" value="esbnprd" ng-model="server" ng-change="loadServer()"> National ESB PRD
+								</label>
+							</div>
+						</div>
+						<div class="box-header">
+							<h3 class="box-title">Regional Broker servers:</h3>
+						</div>
+						<div class="box box-solid bg-teal-gradient">
+							<div>
+								<label> <input type="radio" name="esbenv" id="optionsRadio1" value="wmbaqa" ng-model="server" ng-change="loadServer()"> ATL QA
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio2" value="wmboqa" ng-model="server" ng-change="loadServer()"> ONT QA
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio3" value="wmbwqa" ng-model="server" ng-change="loadServer()"> WST QA
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio4" value="wmbqqa" ng-model="server" ng-change="loadServer()"> QUE QA
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio5" value="wmbapr" ng-model="server" ng-change="loadServer()"> ATL PRD
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio6" value="wmbopr" ng-model="server" ng-change="loadServer()"> ONT PRD
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio7" value="wmbwpr" ng-model="server" ng-change="loadServer()"> WST PRD
+								</label> <strong>|</strong><label> <input type="radio" name="esbenv" id="optionsRadio8" value="wmbqpr" ng-model="server" ng-change="loadServer()"> QUE PRD
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Quick service search:</label> <input type="text" class="form-control" id="searchtext" ng-model="searchtext" ng-change="textChanged()">
+					</div>
+				</div>
+				<!-- /.box-body -->
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-repeat="itserv in servicecatlg">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Services published on selected server:</h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table id="searchrlt" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<div class="box-header">
+									<h3 class="box-title">IT Server: {[{ itserv.itserver }]}</h3>
+								</div>
+							</tr>
+							<tr>
+								<th>Application</th>
+								<th>Port</th>
+								<th>URL</th>
+								<th>Pass-through</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="service in itserv.services">
+								<td ng-if="matchurl(service.url)">{[{ service.ApplicationName }]}</td>
+								<td ng-if="matchurl(service.url)">{[{ service.port }]}</td>
+								<td ng-if="matchurl(service.url)">
+								  <div ng-switch="service.passthrough">
+								    <div ng-switch-when="false"><a target="_blank" ng-href="http://{[{ server }]}:{[{ service.port }]}{[{ service.url }]}?wsdl">http://{[{ server }]}:{[{ service.port }]}{[{ service.url }]}</a></div>
+								    <div ng-switch-when="true"><p><strong>http://{[{ server }]}:{[{ service.port }]}{[{ service.url }]}</strong></p></div>
+    							  </div>
+    							</td>
+								<td ng-if="matchurl(service.url)">{[{ service.passthrough }]}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+
+						</tfoot>
+					</table>
+				</div>
+				<!-- /.box-body -->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+main()
+{
+	if (argc < 2)
+    {
+        usage();
+        exit(-1);
+    }
+	
+	var region = argList.arg_2.asString();
+    var regEx = "ATL|ONT|WST|QUE";
+    if (!region.asString().matches(regEx)) // Check action name
+    {
+       print("Invalid region:, " + region);
+       usage();
+       return -1;
+    }
+	
+		
+  var obj;
+  print("Region: " + region);
+  var config = XMObject::createFromFile("C:\\Users\\fakhrudi\\workspace\\IntegrationPortal\\data\\RegisterServicesData\\client_ip_" + region + ".xml");
+  var xmdir = new XMDirectory(config); 
+ 
+  try
+  {
+  	for(var i=1 ; i<=5 ; i++)
+  	{
+    	obj =  xmdir.getObject("XML/DirectoryMonitor/SAPRMS0" + i + ".xml");
+    	//print(obj);
+    	var data = obj.asString();
+    	print("SAPRMS0" + i + ": " + data.occurrencesOf("</MonitorEntry>"));
+    }
+  }
+  catch(ex)
+  {
+    print("===========================Failure=============================");
+    print("There was a failure in retriving the Toplogy.xml from the Registry, will have to terminate.");
+    print("Please ensure that file name: Toplogy.xml exists in the Registry.");
+    print(ex);
+    print("===========================Failure=============================");
+    return(11);  	
+  }
+  
+  return(0);
+   
+}
+
+usage()
+{
+	print("Missing parameter: Usage ---  xmoscrpt addtoTopology.xms ADD|REMOVE ISP0000 SOBEYS");
+}

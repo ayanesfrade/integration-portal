@@ -1,0 +1,93 @@
+main()
+{
+	if (argc < 2)
+    {
+        usage();
+        exit(-1);
+    }
+	
+	var region = argList.arg_2.asString();
+    var regEx = "ATL|ONT|WST|QUE";
+    if (!region.asString().matches(regEx)) // Check action name
+    {
+       print("Invalid region:, " + region);
+       usage();
+       return -1;
+    }
+	
+		
+  var obj;
+  print("Region: " + region);
+  var config = XMObject::createFromFile("C:\\Users\\fakhrudi\\workspace\\IntegrationPortal\\data\\RegisterServicesData\\client_ip_" + region + ".xml");
+  var xmdir = new XMDirectory(config); 
+ 
+  try
+  {
+    obj =  xmdir.getObject("XML/TopologyModel/Topology.xml");
+    //print(obj);
+  }
+  catch(ex)
+  {
+    print("===========================Failure=============================");
+    print("There was a failure in retriving the Toplogy.xml from the Registry, will have to terminate.");
+    print("Please ensure that file name: Toplogy.xml exists in the Registry.");
+    print(ex);
+    print("===========================Failure=============================");
+    return(11);  	
+  }
+  
+  //Create new xml document
+  var xmoDoc = XMObject::create("nodelist");
+  xmoDoc.nodelist = "";
+  var docRoot = xmoDoc.getFirstChild();
+  
+  //Creates nodes list from the Topology xml
+     var defaultDomain = obj.getFirstChild();
+	 var curs = new XMOCursor(defaultDomain);
+
+	 for(curs.setToFirst(); curs.isValid(); curs.setToNext())
+	 {
+		var grpelem = curs.element();
+		//Create group elements
+		if(grpelem.getMetadata("name").toUpperCase()!= "STORES" && grpelem.getMetadata("name").toUpperCase()!= "SERVERS")
+		{
+		  var groupname = grpelem.getMetadata("name").toUpperCase();
+		  var group = XMObject::create(groupname);
+		  var nodecurs = new XMOCursor(grpelem);
+		  for(nodecurs.setToFirst(); nodecurs.isValid(); nodecurs.setToNext())
+	      {
+	      	var nodeelem = nodecurs.element();
+	      	var nodename = nodeelem.getMetadata("name").toUpperCase();
+	      	try
+			  {
+			     var nodexml = xmdir.getObject("NodeInfo/" + nodename + "/Launcher.xml");
+			     var jmxServiceUrl = nodexml.getMetadata("jmxServiceUrl").asString();
+			     var nodeHost = jmxServiceUrl.substringAfter("//").substringBefore(":");
+	      	     //print(nodeHost);
+	      	     var server = XMObject::create("server");
+	      	     server.set ( "servername", nodeHost, 0);
+	      	     server.set ( "mimnode", nodename, 0);
+	      	     group.insertCopy(server);
+			  }
+			catch(ex)
+			  {
+			    print("=============== Could not find node entry in the Registry, node name:" + nodename + "============");
+			  }
+          }
+	      docRoot.insertCopy(group);
+		}
+		
+	 }
+  
+	// Open file for stream output, throw exceptions on Error.
+  var xmfile = new XMFile("C:\\Users\\fakhrudi\\workspace\\IntegrationPortal\\data\\NodeList\\nodelist" + region + ".xml", XMFile::writeMode, XMFile::stream);
+  xmfile.write (docRoot.asString());
+	// open() and close() are performed implicitly under the covers.
+  return(0);
+   
+}
+
+usage()
+{
+	print("Missing parameter: Usage ---  xmoscrpt addtoTopology.xms ADD|REMOVE ISP0000 SOBEYS");
+}
