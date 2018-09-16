@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
 ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+ENV MYSQL_HOST=itportalmysql
 ##RUN npm config set registry http://registry.npmjs.org/
 RUN npm config set strict-ssl false && npm install --only=production
 COPY . /usr/src/app
