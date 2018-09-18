@@ -36,6 +36,8 @@
     "mysql": "^2.16.0",
     "node-growl": "^0.1.1",
     "nodemailer": "^4.6.8",
+    "npm": "^6.4.1",
+    "package.json": "^2.0.1",
     "pakage.json": "^1.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
