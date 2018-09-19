@@ -168,7 +168,7 @@ $(function() {
     			if (elem.length == 0)
     			{
     			   $(dcontainer).append('<div class="form-group" id="divdir' + values[i] + '">');
-    			   $('#divdir' + values[i]).append('<label>' + values[i] + ' Destination Directory</label><input type="text" class="form-control" placeholder="Enter destination Directory..." name="destDir' + values[i] + '">');
+    			   $('#divdir' + values[i]).append('<label>' + values[i] + ' Destination Directory</label><input type="text" class="form-control" placeholder="Enter destination Directory..." name="destDir' + values[i] + '"' + ' id="destDir' + values[i] + '">');
     			   $(dcontainer).append('<div class="form-group" id="divpatt' + values[i] + '">');
     			   $('#divpatt' + values[i]).append('<label>' + values[i] + ' Destination File Name Pattern</label> <input name="destPatt' + values[i] + '" id="destPatt' + values[i] + '" type="text" class="form-control" value="$XMDM_ORIGINAL_NAME$">');
     		
@@ -196,8 +196,8 @@ $(function() {
         if ($(this).prop('checked')){
         	// Create destination scri	pts file containers
     		$('#divscrpt' + node).append('<div class="form-group" id="divscrptdir' + node + '">');
-    		$('#divscrptdir' + node).append('<label>' + node + ' Script Directory</label><input type="text" class="form-control" placeholder="Enter script directory..." name="scriptdir' + node + '">');
-    		$('#divscrptdir' + node).append('<label>' + node + ' Script Name</label> <input name="scriptname' + node + '" type="text" class="form-control" placeholder="Enter script name and parameters...">');
+    		$('#divscrptdir' + node).append('<label>' + node + ' Script Directory</label><input type="text" class="form-control" placeholder="Enter script directory..." name="scriptdir' + node + '" id="scriptdir' + node + '">');
+    		$('#divscrptdir' + node).append('<label>' + node + ' Script Name</label> <input name="scriptname' + node + '" id="scriptname' + node + '" type="text" class="form-control" placeholder="Enter script name and parameters...">');
 
         } else {
         	// Remove destination scripts file containers
@@ -370,13 +370,16 @@ $(function() {
         		}
         	}
         }
-		//$('#modal-success').modal();
+		$('#modal-success').modal();
 		return true;
 	} 
 	
     $('#reqform').on('submit', function(evt){
             evt.preventDefault();
+			var id = $(document.activeElement).attr('id');
+			if(id == "submit") {
             var action = $(this).attr('action');
+
             var $container = $(this).closest('.container-fluid');
             if (checkform()){
             	$.ajax({
@@ -398,6 +401,31 @@ $(function() {
                     }
                 });
             }
+        }
+        else {
+        	var $container = $(this).closest('.container-fluid');
+            if (checkform()){
+            	$.ajax({
+                    url: 'miminterfacedeploy',
+                    type: 'POST',
+    				data: $(this).serialize(),
+                    success: function(data){
+                        if(data.success){
+                        	$('#filepartarea').hide();
+                        	$('#successtxt').html(data.message);
+                        	$('#modal-success').modal();
+                        } else {
+                        	$('#errortxt').html(data.message);
+                        	$('#modal-danger').modal();
+                        }
+                    },
+                    error: function(){
+                        $container.html('There was a problem.');
+                    }
+                });
+            }
+        }
+            
      });
     
     $('#filesearchform').on('submit', function(evt){
