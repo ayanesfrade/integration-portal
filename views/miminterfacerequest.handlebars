@@ -17,7 +17,7 @@
 		    <!-- <label>Select one region for the source application node list: (*If the interface is going to be deployed to more than one region, select them at the bottom pannel)</label> -->
 		    <label style="margin-left: 20px;">Select region</label>
 			<div class="radio">
-				<label> <input type="radio" name="mimenv" id="regionRadio1" value="ATL" class="flat-red" checked> ATL 
+				<label> <input type="radio" name="mimenv" id="regionRadio1" value="ATL" class="flat-red" checked="checked"> ATL 
 				</label>
 				<label> <input type="radio" name="mimenv" id="regionRadio2" value="ONT" class="flat-red"> ONT 
 				</label> 
@@ -58,15 +58,22 @@
 									</select>
 								</div>
 								<div class="box-header">
-									<h3 class="box-title">Help us configure your file transfer</h3>
+									<h3 class="box-title">Type of file transfer</h3>
 								</div>
 								<!-- /.form-group -->
 								<div class="form-group" id="interfacetypegrp">
 									<div class="radio">
-										<label> <input type="radio" name="interfaceType" id="optionsRadio1" value="F2F" class="flat-red" checked> Flat File
-										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio2" value="F2M" class="flat-red"> Mapped
-										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio3" value="FTP" class="flat-red"> FTP Tranfer
-										</label> <label> <input type="radio" name="interfaceType" id="optionsRadio4" value="AS2" class="flat-red"> AS2 Comm
+										<label> 
+											<input type="radio" name="interfaceType" id="optionsRadio1" value="F2F" class="flat-red" checked> Flat File
+										</label> 
+										<label> 
+											<input type="radio" name="interfaceType" id="optionsRadio2" value="F2M" class="flat-red"> Mapped
+										</label> 
+										<label> 
+											<input type="radio" name="interfaceType" id="optionsRadio3" value="FTP" class="flat-red"> FTP Tranfer
+										</label> 
+										<label> 
+											<input type="radio" name="interfaceType" id="optionsRadio4" value="AS2" class="flat-red"> AS2 Comm
 										</label>
 									</div>
 								</div>
@@ -75,7 +82,8 @@
 									<input type="text" class="form-control" placeholder="Enter archive file dir and name..." id="extpartnerdest" name="extpartnerdest" >
 								</div>
 								<div class="form-group" id="archgrp">
-									<label> <input type="checkbox" class="flat-red" name="sourfilearchive" id="sourfilearchive"> Archive file localy in the source box.
+									<label> 
+										<input type="checkbox" class="flat-red" name="sourfilearchive" id="sourfilearchive"> Archive file localy in the source box.
 									</label>
 								</div>
 								<div class="form-group" id="archivegrp" style="display: none">
@@ -88,21 +96,22 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Source Directory</label> 
-									<input type="text" class="form-control" placeholder="Enter source Directory..." name="sourcedirectory">
+									<input type="text" class="form-control" placeholder="Enter source Directory..." name="sourcedirectory" id="sourcedirectory">
 								</div>
 								<div class="form-group">
 									<label>Source File Pattern</label> 
-									<input type="text" name="sourcfileinclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
+									<input type="text" name="sourcfileinclude" id="sourcfileinclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
 								</div>
 								<div class="form-group">
 									<label>File Exclude Pattern</label> 
-									<input type="text" name="sourcfileexclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
+									<input type="text" name="sourcfileexclude" id="sourcfileexclude" class="form-control" placeholder="Enter pattern like ??_part1.*.txt (? -for any single Chr and * -multiple chr)">
 								</div>
 								<div class="form-group">
 									<label>File Name Sample</label> 
 									<input type="text" class="form-control" placeholder="Enter source file name sample..." name="filenamesample" id="filenamesample">
 								    <label>Please choose one of the interface names that you think is suitable for this file transfer:</label>
 								    <div id=mimintnamediv class="radio"></div>
+								    <!-- <input type="text" class="form-control" placeholder="" name="iname" id="iname"> -->
 								</div>
 								<!-- /.form-group -->
 							</div>
@@ -174,16 +183,16 @@
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse">
 						<div class="form-group">
-							<label> <input type="checkbox" class="flat-red" checked name="atlregion"> Atlantic - National.</label>
+							<label> <input type="checkbox" class="flat-red" name="atlregion" id="atlregion"> Atlantic - National.</label>
 						</div>
 						<div class="form-group">
-							<label> <input type="checkbox" class="flat-red" name="ontregion"> Ontario.</label>
+							<label> <input type="checkbox" class="flat-red" name="ontregion" id="ontregion"> Ontario.</label>
 						</div>
 						<div class="form-group">
-							<label> <input type="checkbox" class="flat-red" name="wstregion"> West.</label>
+							<label> <input type="checkbox" class="flat-red" name="wstregion" id="wstregion"> West.</label>
 						</div>
 						<div class="form-group">
-							<label> <input type="checkbox" class="flat-red" name="queregion"> Quebec.</label>
+							<label> <input type="checkbox" class="flat-red" name="queregion" id="queregion"> Quebec.</label>
 						</div>
 						<input type="hidden" name="intnamepart" id="intnamepart">
 					</div>
@@ -191,11 +200,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label>Additional Comments</label>
-			<textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+			<div class="col-md-6">
+				<label>Project</label>
+				<input type="text" class="form-control" name="project" id="project">
+			</div>
+			
+			<div class="col-md-6">
+				<label>Additional Comments</label>
+				<textarea name="comment" id="comment" class="form-control" rows="3" form="reqform" placeholder="Enter ..."></textarea>
+			</div>
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<input type="hidden" name="inameid" id="inameid" value="">
+			<button type="submit" name="submit" id="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" name="deploy" id="deploy" class="btn btn-primary">Deploy</button>
 		</div>
 	</div>
 </form>
@@ -346,3 +364,154 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+
+
+<script type="text/javascript">
+
+    window.onload = function() {
+
+		$.post("interfacereqfill",
+	    {
+	        	url: window.location.href,
+	    },
+
+      	function(data, status) {
+	        if(status == "success")
+	        {
+	        	if(data.role != "integration")
+	        		$('#deploy').hide()
+
+	        	if(data.jsdata)
+	        	{
+	            	console.log(data.jsdata);
+	            	$('#submit').html("Update");
+	            	$('#project').val(data.jsdata.project);
+	            	$('#comment').html(data.jsdata.comment);
+	            	$('#sourcedirectory').val(data.jsdata.sourcedirectory);
+	            	$('#sourcfileinclude').val(data.jsdata.sourcfileinclude);
+	            	$('#sourcfileexclude').val(data.jsdata.sourcfileexclude);
+	            	$('#filenamesample').val(data.jsdata.filenamesample);
+
+	            	$('#sourcenode').val(data.jsdata.sourcenode);
+	            	$('#sourcenode').trigger('change');
+	            	
+	            	$('[name="mimenv"]').parent('div').removeClass('checked');
+	            	$('input:radio[name="mimenv"][value=' + data.jsdata.mimenv + ']').parent('div').addClass('checked');
+	            	//$('input:radio[name="mimenv"][value=' + data.jsdata.mimenv + ']').parent('div').trigger("click");
+	            	
+
+	            	$('input:radio[name="interfaceType"][value=' + data.jsdata.interfaceType + ']').parent('div').trigger("click");
+
+	            	if(data.jsdata.archivepath != "")
+	            	{
+	            		$('#sourfilearchive').parent('div').trigger("click");
+	            		$('#archivepath').val(data.jsdata.archivepath);
+	            		$('#extpartnerdest').val(data.jsdata.extpartnerdest);
+	            	}
+          	
+
+	            	if(Array.isArray(data.jsdata.destinationnodes))	{
+	            		for(i in data.jsdata.destinationnodes) {
+	            			$("#destinationnodes option[value='" + data.jsdata.destinationnodes[i] + "']").prop("selected", true);
+	            		}	
+	            	}
+	            	else {
+	            		$("#destinationnodes option[value='" + data.jsdata.destinationnodes + "']").prop("selected", true);
+	            	}
+
+	        		$("#destinationnodes").trigger("change");
+
+					var id;
+
+	        		if(Array.isArray(data.jsdata.destinationnodes))	{
+	            		for(i in data.jsdata.destinationnodes) {
+	            			id = "destDir" + data.jsdata.destinationnodes[i];
+	            			$('#'+id).val(data.jsdata[id]);
+
+	            			id = "destPatt" + data.jsdata.destinationnodes[i];
+	            			$('#'+id).val(data.jsdata[id]);
+
+	            			id = "callscript" + data.jsdata.destinationnodes[i];
+	            			if(data.jsdata[id]) {
+		            			$('#'+id).prop('checked', true);
+		            			$('#'+id).trigger('change');
+
+		            			id = "scriptdir"+ data.jsdata.destinationnodes[i];
+		            			$('#'+id).val(data.jsdata[id]);
+
+		            			id = "scriptname"+ data.jsdata.destinationnodes[i];
+		            			$('#'+id).val(data.jsdata[id]);
+		            		}
+	            		}	
+	            	}
+	            	else {
+	            		id = "destDir" + data.jsdata.destinationnodes;
+	            		$('#'+id).val(data.jsdata[id]);
+
+	            		id = "destPatt" + data.jsdata.destinationnodes;
+	            		$('#'+id).val(data.jsdata[id]);
+
+	            		id = "callscript" + data.jsdata.destinationnodes;
+	            		if(data.jsdata[id]) {
+		            		$('#'+id).prop('checked', true);
+		            		$('#'+id).trigger('change');
+
+		            		id = "scriptdir"+ data.jsdata.destinationnodes;
+		            		$('#'+id).val(data.jsdata[id]);
+
+		            		id = "scriptname"+ data.jsdata.destinationnodes;
+		            		$('#'+id).val(data.jsdata[id]);
+		            	}
+	            	}
+
+	            	
+	            	if(data.jsdata.atlregion) {
+	            		$('#atlregion').prop('checked', true);
+	            		$('#atlregion').parent('div').addClass('checked');
+	            	}
+
+	            	if(data.jsdata.ontregion) {
+	            		$('#ontregion').prop('checked', true);
+	            		$('#ontregion').parent('div').addClass('checked');
+	            	}
+
+	            	if(data.jsdata.wstregion) {
+	            		$('#wstregion').prop('checked', true);
+	            		$('#wstregion').parent('div').addClass('checked');
+	            	}
+
+	            	if(data.jsdata.queregion) {
+	            		$('#queregion').prop('checked', true);
+	            		$('#queregion').parent('div').addClass('checked');
+	            	}
+
+	            	//copied from mimportal.js
+            		$('#mimintnamediv').empty();
+			    	var sname = String( $( 'input[name="filenamesample"]' ).val() );
+			    	var sfields = sname.split( '.');
+			    	for (i in sfields) {
+			    		
+			    		var intname = 'F2F_SOURCE_' + sfields[i].toUpperCase() + '_DESTINATION';
+			    	
+			    		var dbval = data.jsdata.iname.split("_");
+			    		dbval = 'F2F_SOURCE_' + dbval[2] + '_DESTINATION';
+			    		//console.log(intname);
+			    		//console.log(dbval);
+			    		if (intname == dbval) {
+			    			//console.log("here!");
+			    			$('#mimintnamediv').append('<label> <input type="radio" name="intname" value="' + sfields[i].toUpperCase() + '" class="flat-red" checked> ' + intname + '</label><BR>');
+			    		}
+			    		else {
+			    			if ( i < sfields.length-1 ) 
+			    				$('#mimintnamediv').append('<label> <input type="radio" name="intname" value="' + sfields[i].toUpperCase() + '" class="flat-red"> ' + intname + '</label><BR>');
+			    		}
+			     	}
+
+			     	$('#inameid').val(data.jsdata.inameid);
+			     	//console.log($('#inameid').val());
+	        	}
+	      	}
+	    });
+	};
+
+</script>
