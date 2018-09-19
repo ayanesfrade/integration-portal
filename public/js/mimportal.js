@@ -174,7 +174,7 @@ $(function() {
     		
     			   // Create destination scripts script call check
     			   $(dscrptcont).append('<div class="form-group" id="divscrpt' + values[i] + '">');
-    			   $('#divscrpt' + values[i]).append('<label> <input type="checkbox"  class="flat-red" name="callscript' + values[i] + '" id="callscript' + values[i] + '">' + values[i] + 'Call Script after file delivery.	</label>');
+    			   $('#divscrpt' + values[i]).append('<label> <input type="checkbox"  class="flat-red" name="callscript' + values[i] + '" id="callscript' + values[i] + '">' + values[i] + '</label>');
     			} 
     		}
             for (i in selected){
