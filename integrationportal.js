@@ -150,6 +150,7 @@ app.post('/miminterfacerequest', requireLogin , function(req, res) {
 		// if there were an error, we would send { error: 'error description' }
     	//console.log('User:' + req.session.user.name + ' Interface request content: ' + JSON.stringify(req.body));
     	var intname = utilities.mimconfig(req.body);
+    	
 		if (intname) {
 			if(req.body.inameid != "") {
 				dbms.updateInterfaceReq(req, res, intname);

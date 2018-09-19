@@ -397,8 +397,18 @@
 	            	
 	            	$('[name="mimenv"]').parent('div').removeClass('checked');
 	            	$('input:radio[name="mimenv"][value=' + data.jsdata.mimenv + ']').parent('div').addClass('checked');
-	            	//$('input:radio[name="mimenv"][value=' + data.jsdata.mimenv + ']').parent('div').trigger("click");
 	            	
+	            	if(data.jsdata.mimenv == "ATL")
+	            		$('#regionRadio1').prop('checked', true);
+	            	else if(data.jsdata.mimenv == "ONT")
+	            		$('#regionRadio2').prop('checked', true);
+	            	else if(data.jsdata.mimenv == "WST")
+	            		$('#regionRadio3').prop('checked', true);
+	            	else if(data.jsdata.mimenv == "QUE")
+	            		$('#regionRadio4').prop('checked', true);
+	            	
+	            	//trigger event is creating a problem while filling up the request
+	            	//$('input:radio[name="mimenv"][value=' + data.jsdata.mimenv + ']').parent('div').trigger("click");
 
 	            	$('input:radio[name="interfaceType"][value=' + data.jsdata.interfaceType + ']').parent('div').trigger("click");
 
