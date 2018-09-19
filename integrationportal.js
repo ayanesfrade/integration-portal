@@ -1,11 +1,12 @@
 var express = require('express'), 
     utilities = require('./lib/utilities.js'),
+    dbms = require('./lib/dbms.js'),
     helpers = require('./lib/helpers'),    
-    formidable = require('formidable');
+    formidable = require('formidable'),
+    url = require('url');
 
 /*require the ibm_db module*/
 var ibmdb = require('ibm_db');
-var dbms = require('./lib/dbms.js');
 
 var app = express();
 
@@ -65,13 +66,6 @@ app.post('/login', function(req, res) {
 	console.log('Authenticating user: ' + req.body.email);
 	//var user = utilities.authenticate(req.body.email, req.body.password);
 	dbms.authenticate(req, res);
-
-	/*if (user){
-		req.session.user = user;
-		res.redirect('miminterfacerequest');
-	} else {
-		res.render('login');
-	}*/
 });
 
 app.get('/register', function(req, res) {
@@ -93,13 +87,30 @@ app.post('/register', function(req, res) {
 });
 
 app.get('/miminterfacerequest', requireLogin , function(req, res) {
-	var data = utilities.getnodelist("ATL", req.session.user.groups);
+	//var data = utilities.getnodelist("ATL", req.session.user.groups);
 	//console.log("data:" + JSON.stringify(data));
-	data.pagetitleheader = 'Interface Requirements';
-	data.pagetitlesmall = 'Data Collection';
-	data.user = req.session.user.name;
-	data.member = req.session.user.member;
-	res.render('miminterfacerequest', data);
+	//data.pagetitleheader = 'Interface Requirements';
+	//data.pagetitlesmall = 'Data Collection';
+	//data.user = req.session.user.name;
+	//data.member = req.session.user.member;
+	//res.render('miminterfacerequest', data);
+
+	var p = url.parse(req.url, true);
+	
+	if(p.search) {
+		var parameter = p.query;
+		dbms.loadWithRegion(req, res, parameter.id);	//this loads the page with the region in the interface
+	}
+	else
+	{
+		var data = utilities.getnodelist("ATL", req.session.user.groups);
+	
+		data.pagetitleheader = 'Interface Requirements';
+		data.pagetitlesmall = 'Data Collection';
+		data.user = req.session.user.name;
+		data.member = req.session.user.member;
+		res.render('miminterfacerequest', data);
+	}
 });
 
 
@@ -116,32 +127,70 @@ app.post('/regionselected', requireLogin , function(req, res) {
 	}
 });
 
+app.post('/interfacereqfill', requireLogin , function(req, res) {
+
+    if(req.xhr || req.accepts('json,html')==='json'){
+    	//console.log(req.session.user);
+
+    	var p = url.parse(req.body.url, true);
+	
+		if(p.search) {
+			var inameid = p.query;
+			dbms.interfacereqfill(req, res, inameid.id);
+		}
+		else
+			res.send({success: true, role: req.session.user.member});
+	}
+});
+
 var VALID_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
 app.post('/miminterfacerequest', requireLogin , function(req, res) {
     if(req.xhr || req.accepts('json,html')==='json'){
 		// if there were an error, we would send { error: 'error description' }
-    	console.log('User:' + req.session.user.name + ' Interface request content: ' + JSON.stringify(req.body));
+    	//console.log('User:' + req.session.user.name + ' Interface request content: ' + JSON.stringify(req.body));
     	var intname = utilities.mimconfig(req.body);
 		if (intname) {
-			utilities.zipintfile(intname);
-			var data = {};
-			data.reqname = req.session.user.name;
-			data.reqemail = req.session.user.email;
-			data.iname = req.body.filenamesample;
-			data.mssg1 = "Thank you for using the Integration Portal";
-			data.mssg2 = "has been submitted to the Integration group for assigment.";
-			res.render('email/mim_int_req_confirmation', {layout : null,data : data }, function(err, html) {
-				if (err) console.log('error in email template');
-				while (!fs.existsSync('data/requests/' + intname + '.zip' ));
-				emailService.send(data.reqemail, 'Integration Portal MIM Interface Request', html, intname);
-			});
-			res.send({ success: true, message: "Interface request completed, you will receive a confirmation email" });
-		} else {
-			res.send({ success: true });
+			if(req.body.inameid != "") {
+				dbms.updateInterfaceReq(req, res, intname);
+				res.send({ success: true, message: "Interface request has been updated" });
+			}
+			else {
+				dbms.insertInterfaceReq(req, res, intname);
+				res.send({ success: true, message: "Interface request completed, you will receive a confirmation email" });
+			}
 		}
-		
-    } else {
+		else {
+			res.send({ success: true });
+		}	
+    }
+    else {
+    	res.status(500);
+	}
+});
+
+app.post('/miminterfacedeploy', requireLogin , function(req, res) {
+    if(req.xhr || req.accepts('json,html')==='json'){
+    	var intname = utilities.mimconfig(req.body);
+    	
+		if (intname) {
+			/*utilities.zipintfile(intname);
+			var data = req.body;
+			data.name = req.session.user.name;
+			data.email = req.session.user.email;
+			res.render('email/mim_int_req_confirmation', {layout : null,data : data }, function(err, html) {
+				if (err) 
+					console.log('error in email template');
+				while (!fs.existsSync('data/requests/' + intname + '.zip' ));
+				emailService.send(data.email, 'Integration Portal MIM Interface Request', html, intname);
+			});*/
+			res.send({ success: true, message: "Interface request has been deployed!" });
+		}
+		else {
+			res.send({ success: true });
+		}	
+    }
+    else {
     	res.status(500);
 	}
 });
