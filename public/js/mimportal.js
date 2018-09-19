@@ -375,12 +375,13 @@ $(function() {
 	} 
 	
     $('#reqform').on('submit', function(evt){
-            evt.preventDefault();
-			var id = $(document.activeElement).attr('id');
-			if(id == "submit") {
-            var action = $(this).attr('action');
+        evt.preventDefault();
+		var id = $(document.activeElement).attr('id');
+		if(id == "submit") {
+			console.log("at submit");
+			var action = $(this).attr('action');
 
-            var $container = $(this).closest('.container-fluid');
+			var $container = $(this).closest('.container-fluid');
             if (checkform()){
             	$.ajax({
                     url: action,
