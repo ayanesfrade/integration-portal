@@ -282,11 +282,15 @@ app.post('/updateInterface', function(req, res) {
 			if (err) console.log('error in email template');
 			emailService.send(data.reqemail, 'The MIM Interface you requested has been assigned', html,'');
 		})
+		res.render('email/mim_int_req_confirmation', {layout : null,data : data }, function(err, html) {
+			if (err) console.log('error in email template');
+			emailService.send(data.intmemberemail, 'MIM Interface assigment notification', html,'');
+		})
 	} if (data.status == "completed" ) {
 		data.mssg2 = "has been completed by";
 		res.render('email/mim_int_req_confirmation', {layout : null,data : data }, function(err, html) {
 			if (err) console.log('error in email template');
-			emailService.send(data.reqemail, 'The MIM Interface you requested has been completed', html,'');
+			emailService.send(data.intmemberemail, 'The MIM Interface you requested has been completed', html,'');
 		})
 	}
 });
