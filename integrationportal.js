@@ -284,7 +284,7 @@ app.post('/updateInterface', function(req, res) {
 		})
 		res.render('email/mim_int_req_confirmation', {layout : null,data : data }, function(err, html) {
 			if (err) console.log('error in email template');
-			emailService.send(data.intmemberemail, 'MIM Interface assigment notification', html,'');
+			emailService.send(data.intmemberemail, 'MIM Interface assigment notification.', html,'');
 		})
 	} if (data.status == "completed" ) {
 		data.mssg2 = "has been completed by";
