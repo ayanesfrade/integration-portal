@@ -319,6 +319,6 @@ app.use(function(err, req, res, next) {
 app.listen(app.get('port'), function() {
 	//update node list when people log in
 	//utilities.updateallnodelist();
-	dbms.dbconnect();
+	//dbms.dbconnect();
 	console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
